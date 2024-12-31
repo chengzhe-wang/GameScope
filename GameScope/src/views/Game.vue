@@ -4,7 +4,7 @@
       <button>Liste de mes jeux aimés</button>
     </div>
     <div class="navigation-buttons">
-      <router-link to="/home"><button>Revenir à l'écran d'accueil</button></router-link>
+      <router-link to="/"><button>Revenir à l'écran d'accueil</button></router-link>
       <router-link to="/about"><button>A propos</button></router-link>
     </div>
     <h1>Liste des Jeux</h1>
