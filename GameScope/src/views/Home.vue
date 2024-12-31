@@ -1,8 +1,8 @@
 <template>
   <div class="home">
     <div class="auth-buttons">
-      <button>S'inscrire</button>
-      <button>Se connecter</button>
+      <router-link to="/register"><button>S'inscrire</button></router-link>
+      <router-link to="/login"><button>Se connecter</button></router-link>
     </div>
     <div class="welcome-section">
       <h1 class="title">Welcome to Game Library</h1>

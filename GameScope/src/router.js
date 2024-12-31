@@ -5,11 +5,13 @@ import Home from '@/views/Home.vue';
 import About from '@/views/About.vue';
 import Game from '@/views/Game.vue';
 import Detail from '@/views/Detail.vue';
-import App from '@/App.vue';
+import Login from '@/views/Login.vue';
+import Register from '@/views/Register.vue';
+// import App from '@/App.vue';
 
 const routes = [
   {
-    path: '/home',
+    path: '/',
     name: 'Home',
     component: Home,
   },
@@ -27,10 +29,17 @@ const routes = [
     name: 'Detail', 
     component: Detail },
   {
-    path: '/',
-    name: 'App',
-    component: App,
+    path: '/login',
+    name: 'Login',
+    component: Login,
   },
+  {
+    path: '/register',
+    name: 'Register',
+    component: Register,
+  },
+
+
 ];
 
 const router = createRouter({
