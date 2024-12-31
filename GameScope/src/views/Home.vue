@@ -1,185 +1,108 @@
 <template>
-  <div class="auth-container">
-    <h1>{{ isLogin ? 'Connexion' : 'Inscription' }}</h1>
-
-    <!-- Formulaire de connexion -->
-    <form v-if="isLogin" @submit.prevent="handleLogin">
-      <div class="form-group">
-        <label for="username">Nom d'utilisateur :</label>
-        <input type="text" id="username" v-model="username" required />
-      </div>
-      <div class="form-group">
-        <label for="password">Mot de passe :</label>
-        <input type="password" id="password" v-model="password" required />
-      </div>
-      <button type="submit">Se connecter</button>
-    </form>
-
-    <!-- Formulaire d'inscription -->
-    <form v-if="!isLogin" @submit.prevent="handleRegister">
-      <div class="form-group">
-        <label for="username">Nom d'utilisateur :</label>
-        <input type="text" id="username" v-model="username" required />
-      </div>
-      <div class="form-group">
-        <label for="password">Mot de passe :</label>
-        <input type="password" id="password" v-model="password" required />
-      </div>
-      <div class="form-group">
-        <label for="confirmPassword">Confirmer le mot de passe :</label>
-        <input type="password" id="confirmPassword" v-model="confirmPassword" required />
-      </div>
-      <button type="submit">S'inscrire</button>
-    </form>
-
-    <div v-if="errorMessage" class="error">{{ errorMessage }}</div>
-
-    <p>
-      <span v-if="isLogin">Pas encore de compte ? <a href="#" @click="toggleForm">Inscrivez-vous</a></span>
-      <span v-if="!isLogin">Vous avez déjà un compte ? <a href="#" @click="toggleForm">Connectez-vous</a></span>
-    </p>
+  <div class="home">
+    <div class="auth-buttons">
+      <button>S'inscrire</button>
+      <button>Se connecter</button>
+    </div>
+    <h1>Welcome to Game Library</h1>
+    <p>Select where you want to go:</p>
+    <div class="navigation-buttons">
+      <router-link to="/game"><button>Accéder à la liste des jeux </button></router-link>
+      <router-link to="/about"><button>A propos</button></router-link>
+    </div>
+    <div class="side-section">
+      <section class="latest-news">
+        <h2>Latest News</h2>
+        <!-- Content will be added here -->
+      </section>
+      <section class="upcoming-games">
+        <h2>Upcoming Games</h2>
+        <!-- Content will be added here -->
+      </section>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      isLogin: true, // Par défaut, afficher le formulaire de connexion
-      username: '',
-      password: '',
-      confirmPassword: '',
-      errorMessage: '',
-    };
-  },
-  methods: {
-    toggleForm() {
-      this.isLogin = !this.isLogin;
-      this.errorMessage = ''; // Réinitialiser les erreurs lorsque l'on change de formulaire
-    },
-    async handleLogin() {
-      try {
-        const response = await fetch('http://localhost:8000/api/login', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            username: this.username,
-            password: this.password,
-          }),
-        });
-
-        const data = await response.json();
-
-        if (response.ok) {
-          // Connexion réussie, rediriger ou afficher un message
-          this.$router.push('/dashboard');
-        } else {
-          this.errorMessage = data.message || 'Nom d\'utilisateur ou mot de passe incorrect.';
-        }
-      } catch (error) {
-        this.errorMessage = 'Erreur de connexion, veuillez réessayer plus tard.';
-      }
-    },
-    async handleRegister() {
-      if (this.password !== this.confirmPassword) {
-        this.errorMessage = 'Les mots de passe ne correspondent pas.';
-        return;
-      }
-
-      try {
-        const response = await fetch('http://localhost:8000/api/register', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            username: this.username,
-            password: this.password,
-          }),
-        });
-
-        const data = await response.json();
-
-        if (response.ok) {
-          // Inscription réussie, rediriger vers la page de connexion
-          this.$router.push('/login');
-        } else {
-          this.errorMessage = data.message || 'Erreur lors de l\'inscription.';
-        }
-      } catch (error) {
-        this.errorMessage = 'Erreur de connexion, veuillez réessayer plus tard.';
-      }
-    },
-  },
+  name: "Home",
 };
 </script>
 
 <style scoped>
-/* Style du formulaire */
-.auth-container {
-  max-width: 400px;
-  margin: 0 auto;
+.home {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 0;
   padding: 20px;
-  background-color: #f4f4f4;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  background-color: #f0f0f0;
+  min-height: 100vh;
+  position: relative;
+}
+
+.auth-buttons {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.auth-buttons button {
+  margin: 0 5px;
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
 }
 
 h1 {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.form-group {
-  margin-bottom: 15px;
-}
-
-label {
-  display: block;
-  margin-bottom: 5px;
-}
-
-input {
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-}
-
-button {
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  background-color: #28a745;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #218838;
-}
-
-.error {
-  color: red;
-  margin-top: 10px;
-  text-align: center;
+  color: #20232a;
 }
 
 p {
-  text-align: center;
+  color: #333;
 }
 
-a {
-  color: #007bff;
+.navigation-buttons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.navigation-buttons button {
+  margin: 0 10px;
+  padding: 10px 20px;
+  font-size: 16px;
   cursor: pointer;
 }
 
-a:hover {
-  text-decoration: underline;
+.side-section {
+  display: flex;
+  justify-content: center; /* Center the sections */
+  margin-top: 20px;
+  width: 100%; /* Ensure it takes the full width */
+}
+
+.latest-news, .upcoming-games {
+  border: 1px solid #61dafb;
+  padding: 20px;
+  width: 45%;
+  max-width: 400px; /* Set a maximum width */
+  box-sizing: border-box;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin: 0 10px; /* Add margin between the sections */
+}
+
+.latest-news h2, .upcoming-games h2 {
+  margin-top: 0;
+  color: #20232a;
+}
+
+button {
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
 }
 </style>
