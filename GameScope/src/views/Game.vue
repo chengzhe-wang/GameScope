@@ -79,32 +79,71 @@ export default {
 </script>
 
 <style scoped>
-.game {
-  font-family: Arial, sans-serif;
-  text-align: center;
+/* General Styles */
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #1b1b1b;
+  color: #ffffff;
   margin: 0;
-  padding: 20px;
+  padding: 0;
   box-sizing: border-box;
-  background-color: #f0f0f0;
-  min-height: 100vh;
-  position: relative;
 }
 
-.liked-games-button {
+h1, h2 {
+  color: #f5c518;
+  margin: 0;
+}
+
+p {
+  color: #cccccc;
+  margin: 0;
+}
+
+button {
+  background-color: #f5c518;
+  color: #1b1b1b;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #e5b518;
+}
+
+.auth-buttons, .liked-games-button, .back-button {
   position: absolute;
-  top: 20px;
+  top: 40px; /* Move down */
   right: 20px;
 }
 
-.liked-games-button button {
+.auth-buttons button, .liked-games-button button, .back-button {
   margin: 0 5px;
   padding: 10px 20px;
   font-size: 14px;
   cursor: pointer;
 }
 
-h1 {
-  color: #20232a;
+/* Game Page Styles */
+.game {
+  text-align: center;
+  padding: 20px;
+  min-height: 100vh;
+  position: relative;
+  background-color: #2b2b2b; /* Change background color to dark gray */
+}
+
+.navigation-buttons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.navigation-buttons button {
+  margin: 0 10px;
 }
 
 .game-grid {
@@ -157,25 +196,5 @@ input[type="text"] {
 .pagination span {
   font-size: 18px;
   font-weight: bold;
-}
-
-button {
-  margin: 10px;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.navigation-buttons {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
-.navigation-buttons button {
-  margin: 0 10px;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
 }
 </style>

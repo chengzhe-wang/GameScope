@@ -4,11 +4,12 @@
       <button>S'inscrire</button>
       <button>Se connecter</button>
     </div>
-    <h1>Welcome to Game Library</h1>
-    <p>Select where you want to go:</p>
-    <div class="navigation-buttons">
-      <router-link to="/game"><button>Accéder à la liste des jeux </button></router-link>
-      <router-link to="/about"><button>A propos</button></router-link>
+    <div class="welcome-section">
+      <h1 class="title">Welcome to Game Library</h1>
+      <div class="navigation-buttons">
+        <router-link to="/game"><button>Accéder à la liste des jeux </button></router-link>
+        <router-link to="/about"><button>A propos</button></router-link>
+      </div>
     </div>
     <div class="side-section">
       <section class="latest-news">
@@ -30,36 +31,75 @@ export default {
 </script>
 
 <style scoped>
-.home {
-  font-family: Arial, sans-serif;
-  text-align: center;
+/* General Styles */
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #1b1b1b;
+  color: #ffffff;
   margin: 0;
-  padding: 20px;
+  padding: 0;
   box-sizing: border-box;
-  background-color: #f0f0f0;
-  min-height: 100vh;
-  position: relative;
 }
 
-.auth-buttons {
+h1, h2 {
+  color: #f5c518;
+  margin: 0;
+}
+
+p {
+  color: #cccccc;
+  margin: 0;
+}
+
+button {
+  background-color: #f5c518;
+  color: #1b1b1b;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #e5b518;
+}
+
+.auth-buttons, .liked-games-button, .back-button {
   position: absolute;
-  top: 20px;
+  top: 40px; /* Move down */
   right: 20px;
 }
 
-.auth-buttons button {
+.auth-buttons button, .liked-games-button button, .back-button {
   margin: 0 5px;
   padding: 10px 20px;
   font-size: 14px;
   cursor: pointer;
 }
 
-h1 {
-  color: #20232a;
+/* Home Page Styles */
+.home {
+  text-align: center;
+  padding: 20px;
+  min-height: 100vh;
+  position: relative;
+  background-color: #2b2b2b; /* Change background color to dark gray */
 }
 
-p {
-  color: #333;
+.welcome-section {
+  border: 2px solid #000000; /* Add black border */
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-family: 'Pacifico', cursive; /* Use a more attractive font */
+  font-size: 3em;
+  color: #f5c518;
+  margin-bottom: 20px;
 }
 
 .navigation-buttons {
@@ -70,39 +110,26 @@ p {
 
 .navigation-buttons button {
   margin: 0 10px;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
 }
 
 .side-section {
   display: flex;
-  justify-content: center; /* Center the sections */
+  justify-content: center;
   margin-top: 20px;
-  width: 100%; /* Ensure it takes the full width */
+  width: 100%;
 }
 
 .latest-news, .upcoming-games {
-  border: 1px solid #61dafb;
+  border: 1px solid #f5c518;
   padding: 20px;
   width: 45%;
-  max-width: 400px; /* Set a maximum width */
-  box-sizing: border-box;
-  background-color: #ffffff;
+  max-width: 400px;
+  background-color: #2b2b2b;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-  margin: 0 10px; /* Add margin between the sections */
-}
-
-.latest-news h2, .upcoming-games h2 {
-  margin-top: 0;
-  color: #20232a;
-}
-
-button {
-  margin: 10px;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
+  margin: 0 10px;
 }
 </style>
+
+<!-- Add the link to the Google Fonts API -->
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">

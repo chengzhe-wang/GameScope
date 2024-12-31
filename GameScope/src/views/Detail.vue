@@ -43,24 +43,71 @@ export default {
 </script>
 
 <style scoped>
-.detail {
-  font-family: Arial, sans-serif;
-  text-align: center;
+/* General Styles */
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #1b1b1b;
+  color: #ffffff;
   margin: 0;
-  padding: 20px;
+  padding: 0;
   box-sizing: border-box;
-  background-size: contain; /* Change from cover to contain to reduce image size */
-  background-position: center;
+}
+
+h1, h2 {
+  color: #f5c518;
+  margin: 0;
+}
+
+p {
+  color: #cccccc;
+  margin: 0;
+}
+
+button {
+  background-color: #f5c518;
+  color: #1b1b1b;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #e5b518;
+}
+
+.auth-buttons, .liked-games-button, .back-button {
+  position: absolute;
+  top: 40px; /* Move down */
+  right: 20px;
+}
+
+.auth-buttons button, .liked-games-button button, .back-button {
+  margin: 0 5px;
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* Detail Page Styles */
+.detail {
+  text-align: center;
+  padding: 20px;
   min-height: 100vh;
+  background-size: contain;
+  background-position: center;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   backdrop-filter: blur(20px);
   position: relative;
+  background-color: #2b2b2b; /* Change background color to dark gray */
 }
 
 .detail-card {
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(43, 43, 43, 0.8);
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -68,20 +115,9 @@ export default {
   margin-right: 20px;
 }
 
-h1, h2 {
-  color: #20232a;
-}
-
-p {
-  color: #333;
-}
-
 .back-button {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background-color: #007bff;
-  color: white;
+  background-color: #f5c518;
+  color: #1b1b1b;
   padding: 10px 20px;
   border-radius: 5px;
   text-decoration: none;
@@ -89,6 +125,6 @@ p {
 }
 
 .back-button:hover {
-  background-color: #0056b3;
+  background-color: #e5b518;
 }
 </style>
