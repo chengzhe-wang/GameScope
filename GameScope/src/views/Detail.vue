@@ -1,6 +1,6 @@
 <template>
   <div class="detail" :style="{ backgroundImage: `url(${game ? game.background_image : ''})` }">
-    <router-link to="/" class="back-button">Retour à la liste des jeux</router-link>
+    <router-link to="/game" class="back-button">Retour à la liste des jeux</router-link>
     <div class="detail-card">
       <h1>Détails du Jeu</h1>
       <div v-if="game">

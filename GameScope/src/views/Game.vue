@@ -1,5 +1,12 @@
 <template>
   <div class="game">
+    <div class="liked-games-button">
+      <button>Liste de mes jeux aimés</button>
+    </div>
+    <div class="navigation-buttons">
+      <router-link to="/home"><button>Revenir à l'écran d'accueil</button></router-link>
+      <router-link to="/about"><button>A propos</button></router-link>
+    </div>
     <h1>Liste des Jeux</h1>
     <input 
       type="text" 
@@ -80,6 +87,20 @@ export default {
   box-sizing: border-box;
   background-color: #f0f0f0;
   min-height: 100vh;
+  position: relative;
+}
+
+.liked-games-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.liked-games-button button {
+  margin: 0 5px;
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
 }
 
 h1 {
@@ -136,5 +157,25 @@ input[type="text"] {
 .pagination span {
   font-size: 18px;
   font-weight: bold;
+}
+
+button {
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.navigation-buttons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.navigation-buttons button {
+  margin: 0 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
 }
 </style>
